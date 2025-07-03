@@ -1,0 +1,29 @@
+package com.tbo.villa_api.controller;
+
+import com.tbo.villa_api.model.Booking;
+import com.tbo.villa_api.service.BookingService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/bookings")
+public class BookingController {
+
+    @Autowired
+    private BookingService bookingService;
+
+    @GetMapping
+    public List<Booking> getAllBookings() {
+        return bookingService.getAllBookings();
+    }
+
+    @GetMapping("/{id}")
+    public Booking getBookingById(@PathVariable Long id) {
+        return bookingService.getBookingById(id);
+    }
+
+    // Tambahkan PUT atau DELETE booking jika diinginkan
+}
