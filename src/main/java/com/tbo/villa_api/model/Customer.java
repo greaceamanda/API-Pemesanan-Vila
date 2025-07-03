@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "customers")
@@ -23,6 +24,7 @@ public class Customer {
     private String phone;
 
     @OneToMany(mappedBy = "customer")
+    @JsonManagedReference("customer-booking")
     private List<Booking> bookings;
 
     // Getter & Setter

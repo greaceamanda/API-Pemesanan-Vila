@@ -4,7 +4,7 @@ import com.tbo.villa_api.model.Voucher;
 import com.tbo.villa_api.repository.VoucherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.tbo.villa_api.exception.ResourceNotFoundException;
 import java.util.List;
 
 @Service
@@ -19,7 +19,7 @@ public class VoucherService {
 
     public Voucher getVoucherById(Long id) {
         return voucherRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Voucher not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Voucher not found with id: " + id));
     }
 
     public Voucher createVoucher(Voucher voucher) {

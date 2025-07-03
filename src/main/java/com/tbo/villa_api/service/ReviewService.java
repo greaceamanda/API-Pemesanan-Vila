@@ -6,7 +6,7 @@ import com.tbo.villa_api.model.Booking;
 import com.tbo.villa_api.repository.ReviewRepository;
 import com.tbo.villa_api.repository.BookingRepository;
 // import com.tbo.villa_api.repository.CustomerRepository;
-
+import com.tbo.villa_api.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +38,7 @@ public class ReviewService {
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
 
         if (!booking.getCustomer().getId().equals(customerId)) {
-            throw new RuntimeException("Customer does not match this booking");
+            throw new ResourceNotFoundException("Customer does not match this booking");
         }
 
         review.setBooking(booking);

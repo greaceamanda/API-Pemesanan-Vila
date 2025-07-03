@@ -1,29 +1,25 @@
-package com.tbo.villa_api.model;
+package com.tbo.villa_api.dto;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
-@Table(name = "vouchers")
-public class Voucher {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class VoucherDTO {
     private Long id;
-
     private String code;
     private String description;
     private Double discount;
-
     private LocalDateTime startDate;
     private LocalDateTime endDate;
 
-    @OneToMany(mappedBy = "voucher")
-    @JsonIgnore
-    private List<Booking> bookings;
+    public VoucherDTO() {}
+
+    public VoucherDTO(Long id, String code, String description, Double discount, LocalDateTime startDate, LocalDateTime endDate) {
+        this.id = id;
+        this.code = code;
+        this.description = description;
+        this.discount = discount;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     // Getter & Setter
     public Long getId() { return id; }
@@ -43,7 +39,4 @@ public class Voucher {
 
     public LocalDateTime getEndDate() { return endDate; }
     public void setEndDate(LocalDateTime endDate) { this.endDate = endDate; }
-
-    public List<Booking> getBookings() { return bookings; }
-    public void setBookings(List<Booking> bookings) { this.bookings = bookings; }
 }

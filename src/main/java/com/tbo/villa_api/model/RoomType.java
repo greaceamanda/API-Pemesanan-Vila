@@ -2,6 +2,7 @@ package com.tbo.villa_api.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "room_types")
@@ -13,6 +14,7 @@ public class RoomType {
 
     @ManyToOne
     @JoinColumn(name = "villa", nullable = false)
+    @JsonBackReference("villa-room")
     private Villa villa;
 
     @NotBlank

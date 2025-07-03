@@ -1,5 +1,6 @@
 package com.tbo.villa_api.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
@@ -22,6 +23,7 @@ public class Villa {
     private String address;
 
     @OneToMany(mappedBy = "villa", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference("villa-room")
     private List<RoomType> rooms;
 
     // Getter & Setter

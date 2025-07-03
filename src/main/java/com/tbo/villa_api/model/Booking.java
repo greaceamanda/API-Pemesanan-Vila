@@ -2,6 +2,8 @@ package com.tbo.villa_api.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "bookings")
@@ -14,11 +16,13 @@ public class Booking {
     // Relasi ke customer
     @ManyToOne
     @JoinColumn(name = "customer")
+    @JsonBackReference("customer-booking")
     private Customer customer;
 
     // Relasi ke room_type
     @ManyToOne
     @JoinColumn(name = "room_type")
+    @JsonIgnoreProperties({"villa", "rooms"}) // abaikan properti yang bisa looping
     private RoomType roomType;
 
     private LocalDateTime checkinDate;
@@ -26,9 +30,10 @@ public class Booking {
 
     private Integer price;
 
-    // Relasi ke voucher (opsional)
+    // Relasi ke voucher
     @ManyToOne
     @JoinColumn(name = "voucher")
+    @JsonBackReference("voucher-booking")
     private Voucher voucher;
 
     private Integer finalPrice;

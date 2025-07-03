@@ -6,7 +6,7 @@ import com.tbo.villa_api.model.RoomType;
 import com.tbo.villa_api.repository.BookingRepository;
 import com.tbo.villa_api.repository.CustomerRepository;
 import com.tbo.villa_api.repository.RoomTypeRepository;
-
+import com.tbo.villa_api.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class BookingService {
 
     public Booking getBookingById(Long id) {
         return bookingRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Booking not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Booking not found with id: " + id));
     }
 
     public List<Booking> getBookingsByCustomerId(Long customerId) {
@@ -39,10 +39,10 @@ public class BookingService {
 
     public Booking createBookingForCustomer(Long customerId, Booking booking) {
         Customer customer = customerRepository.findById(customerId)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
 
         RoomType roomType = roomTypeRepository.findById(booking.getRoomType().getId())
-                .orElseThrow(() -> new RuntimeException("Room type not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Room type not found"));
 
         booking.setCustomer(customer);
         booking.setRoomType(roomType);
