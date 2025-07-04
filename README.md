@@ -177,8 +177,16 @@ c. Mengubah data (PUT)
     ![image](https://github.com/user-attachments/assets/b102d296-46ce-4654-916a-c2e07ad5d690)
     Endpoint ini digunakan untuk mengubah informasi dari voucher yang sudah ada. Pengujian terhadap endpoint `PUT /vouchers/{id}` berhasil memperbarui data voucher dan memberikan status **200 OK**.
     
-34. ![image](https://github.com/user-attachments/assets/bec9ff38-53b4-427c-87d4-48c48ff63077)
+24. `404 Not Found`
+    ![image](https://github.com/user-attachments/assets/bec9ff38-53b4-427c-87d4-48c48ff63077)
+   Respons ini muncul ketika pengguna mencoba mengakses data yang tidak tersedia dalam sistem. Misalnya, saat melakukan permintaan ke endpoint `GET /villas/{id}` dengan ID yang tidak valid atau tidak terdaftar di database. Pengujian terhadap kasus ini menunjukkan bahwa sistem berhasil memberikan respons **404 Not Found**, yang berarti penanganan terhadap data yang tidak ditemukan telah dilakukan dengan baik.
 
-35. ![image](https://github.com/user-attachments/assets/34a5f5cb-c5d8-4fe6-8a08-78937845ad10)
+25. `400 Bad Request`
+    ![image](https://github.com/user-attachments/assets/34a5f5cb-c5d8-4fe6-8a08-78937845ad10)
+    Status ini dikembalikan ketika permintaan ke server mengandung input yang tidak valid atau kosong, misalnya field yang wajib diisi tidak diberikan saat melakukan `POST /villas` atau `POST /customers`. Pengujian dilakukan dengan sengaja mengosongkan field tertentu dalam JSON body, seperti `name`, `email`, atau `address`, dan server secara tepat merespons dengan status **400 Bad Request**, lengkap dengan pesan validasi.
 
-36. ![image](https://github.com/user-attachments/assets/4a4a666c-3fe8-4854-bcf0-120ecd9f004a)
+
+26. `GET /customers`
+    ![image](https://github.com/user-attachments/assets/4a4a666c-3fe8-4854-bcf0-120ecd9f004a)
+    Endpoint ini digunakan untuk mengambil seluruh daftar customer yang terdaftar di sistem. Pengujian terhadap endpoint `GET /customers` berhasil menampilkan seluruh data customer dalam bentuk array JSON, dan server merespons dengan status **200 OK**.
+
