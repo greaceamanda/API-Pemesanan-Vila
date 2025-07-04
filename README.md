@@ -83,68 +83,90 @@ c. Mengubah data (PUT)
 note: HTTP 404 jika id tidak ditemukan dan HTTP 400 jika data tidak lengkap
 
 ### Hasil Pengujian
-1. GET /villas
+1. `GET /villas`
    ![image](https://github.com/user-attachments/assets/d3503a97-4b9b-4411-91d3-691f6ae8e3c9)
    Endpoint ini digunakan untuk mengambil seluruh daftar vila yang tersedia dalam sistem. Pengujian terhadap endpoint `GET /villas` berhasil menampilkan semua data vila yang tersedia pada database dengan status **200 OK**.
    
-2. GET /villas/{id}
+2. `GET /villas/{id}`
    ![image](https://github.com/user-attachments/assets/cb7a2425-ce06-4755-a6cc-5da1d733ce44)
    Endpoint ini digunakan untuk mengambil detail informasi dari sebuah vila berdasarkan ID tertentu. Pengujian terhadap endpoint `GET /villas/{id}` berhasil menampilkan detail vila dengan ID yang valid, ditandai dengan status **200 OK**. Untuk ID yang tidak ditemukan, sistem merespons dengan status **404 Not Found**.
    
-4. GET /villas/{id}/rooms
+3. `GET /villas/{id}/rooms`
    ![image](https://github.com/user-attachments/assets/e8f3eb20-147d-410e-9f74-63281859ca34)
    Endpoint ini digunakan untuk menampilkan daftar tipe kamar yang dimiliki oleh vila tertentu. Pengujian terhadap endpoint `GET /villas/{id}/rooms` berhasil menampilkan data tipe kamar untuk ID vila yang valid dengan status **200 OK**.
 
-5. GET /villas/{id}/bookings
+4. `GET /villas/{id}/bookings`
    ![image](https://github.com/user-attachments/assets/f72c484c-4238-4051-83b7-2aa5d650fa3c)
    Endpoint ini digunakan untuk menampilkan semua data pemesanan (booking) pada vila tertentu. Pengujian terhadap endpoint `GET /villas/{id}/bookings` berhasil menampilkan seluruh riwayat booking untuk vila dengan ID valid dan memberikan respons status **200 OK**.
    
-6. GET /villas/{id}/reviews
+5. `GET /villas/{id}/reviews`
    ![image](https://github.com/user-attachments/assets/729e07f0-d0c0-402a-83cd-ecfe6b997a15)
    Endpoint ini digunakan untuk menampilkan semua review atau ulasan yang diberikan oleh customer terhadap vila tertentu. Pengujian terhadap endpoint `GET /villas/{id}/reviews` berhasil menampilkan data ulasan dengan status **200 OK**.
   
-7. GET /villas?ci_date={checkin}&co_date={checkout}
+6. `GET /villas?ci_date=...&co_date=...`
    ![image](https://github.com/user-attachments/assets/35ad5d3e-5759-4015-8375-8aab176cc244)
    Endpoint ini digunakan untuk mengecek ketersediaan vila berdasarkan rentang tanggal check-in dan check-out. Pengujian terhadap endpoint `GET /villas?ci_date=...&co_date=...` berhasil menampilkan daftar vila yang tersedia dengan status **200 OK**, dan mengembalikan status **400 Bad Request** jika parameter tanggal tidak sesuai format.
    
-8. POST /villas
+7. `POST /villas`
    ![image](https://github.com/user-attachments/assets/46a7daee-0776-460d-b09d-9d2b1c26680c)
     Endpoint ini digunakan untuk menambahkan data vila baru ke dalam sistem. Pengujian terhadap endpoint `POST /villas` berhasil menambahkan data vila baru dengan input yang valid dan memberikan status **200 OK**. Permintaan dengan data tidak lengkap menghasilkan status **400 Bad Request**.
    
-10. ![image](https://github.com/user-attachments/assets/02994f6f-6be7-4b94-ba45-285883ceea83)
+8. `POST /villas/{id}/rooms`
+    ![image](https://github.com/user-attachments/assets/02994f6f-6be7-4b94-ba45-285883ceea83)
+   Endpoint ini digunakan untuk menambahkan tipe kamar baru ke dalam vila tertentu. Pengujian terhadap endpoint `POST /villas/{id}/rooms` berhasil menyimpan data kamar dengan atribut lengkap dan menghasilkan status **200 OK**.
     
-11. ![image](https://github.com/user-attachments/assets/c441893a-fa0f-41ba-b25e-a49b4968b4b4)
+9. `PUT /villas/{id}`
+    ![image](https://github.com/user-attachments/assets/c441893a-fa0f-41ba-b25e-a49b4968b4b4)
+    Endpoint ini digunakan untuk mengubah informasi vila seperti nama, alamat, dan deskripsi. Pengujian terhadap endpoint `PUT /villas/{id}` berhasil memperbarui data vila dan memberikan status **200 OK**.
     
-12. ![image](https://github.com/user-attachments/assets/cb6caad8-e561-46d4-b011-705f329b2409)
+10. `PUT /villas/{id}/rooms/{id}`
+    ![image](https://github.com/user-attachments/assets/cb6caad8-e561-46d4-b011-705f329b2409)
+    Endpoint ini digunakan untuk mengubah informasi pada tipe kamar yang dimiliki vila tertentu. Pengujian terhadap endpoint `PUT /villas/{id}/rooms/{id}` berhasil memperbarui data kamar dengan status **200 OK**.
     
-13. ![image](https://github.com/user-attachments/assets/5e7a4435-858e-48f2-8f59-1348046fead4)
+11. `DELETE /villas/{id}/rooms/{id}`
+    ![image](https://github.com/user-attachments/assets/5e7a4435-858e-48f2-8f59-1348046fead4)
+    Endpoint ini digunakan untuk menghapus tipe kamar tertentu dari sebuah vila. Pengujian terhadap endpoint `DELETE /villas/{id}/rooms/{id}` berhasil menghapus data kamar dan memberikan status **200 OK**.
     
-14. ![image](https://github.com/user-attachments/assets/a1cfb7bc-513f-43b7-b014-779f8ece5903)
+12.  `DELETE /villas/{id}`\
+    ![image](https://github.com/user-attachments/assets/a1cfb7bc-513f-43b7-b014-779f8ece5903)
+    Endpoint ini digunakan untuk menghapus data vila dari sistem. Pengujian terhadap endpoint `DELETE /villas/{id}` berhasil menghapus vila berdasarkan ID yang valid dengan status **200 OK**. 
     
-15. ![image](https://github.com/user-attachments/assets/c19f3138-ffff-4e9e-9cae-ebd540e71434)
+13.  `GET /customers`
+    ![image](https://github.com/user-attachments/assets/c19f3138-ffff-4e9e-9cae-ebd540e71434)
+   Endpoint ini digunakan untuk mengambil seluruh daftar customer yang terdaftar di sistem. Pengujian terhadap endpoint `GET /customers` berhasil menampilkan semua data customer dengan status **200 OK**.
     
-16. ![image](https://github.com/user-attachments/assets/c58552b6-207d-42a6-8f7e-6e8d25329807)
+14. `GET /customers/{id}`
+    ![image](https://github.com/user-attachments/assets/c58552b6-207d-42a6-8f7e-6e8d25329807)
+    Endpoint ini digunakan untuk mengambil detail informasi dari seorang customer berdasarkan ID. Pengujian terhadap endpoint `GET /customers/{id}` berhasil menampilkan data customer yang valid dengan status **200 OK**.
     
-17. ![image](https://github.com/user-attachments/assets/55f044d2-529f-4cb2-abdd-d735097c6166)
+15. `GET /customers/{id}/bookings`
+    ![image](https://github.com/user-attachments/assets/55f044d2-529f-4cb2-abdd-d735097c6166)
+    Endpoint ini digunakan untuk menampilkan daftar booking yang pernah dilakukan oleh customer tertentu. Pengujian terhadap endpoint `GET /customers/{id}/bookings` berhasil menampilkan seluruh data booking dengan status **200 OK**.
     
-18. ![image](https://github.com/user-attachments/assets/83887123-59e5-4f46-a78f-72c50129caf4)
+16. `GET /customers/{id}/reviews`
+    ![image](https://github.com/user-attachments/assets/83887123-59e5-4f46-a78f-72c50129caf4)
+    Endpoint ini digunakan untuk menampilkan ulasan atau review yang telah diberikan oleh seorang customer. Pengujian terhadap endpoint `GET /customers/{id}/reviews` berhasil menampilkan data review dengan status **200 OK**.
     
-19. ![image](https://github.com/user-attachments/assets/d8a575f7-24a7-4f77-9486-b92dea6e286d)
+17. `POST /customers`
+    ![image](https://github.com/user-attachments/assets/d8a575f7-24a7-4f77-9486-b92dea6e286d)
+    Endpoint ini digunakan untuk registrasi customer baru ke dalam sistem. Pengujian terhadap endpoint `POST /customers` berhasil menambahkan data customer baru dengan input valid dan status **200 OK**, serta menghasilkan status **400 Bad Request** jika data tidak lengkap.
     
-20. ![image](https://github.com/user-attachments/assets/949bc56f-e21b-4395-8545-e8dd952161d2)
+18. `POST /customers/{id}/bookings`
+    ![image](https://github.com/user-attachments/assets/949bc56f-e21b-4395-8545-e8dd952161d2)
+    Endpoint ini digunakan oleh customer untuk melakukan pemesanan vila. Pengujian terhadap endpoint `POST /customers/{id}/bookings` berhasil membuat data pemesanan dengan status **200 OK**, dan memberikan status **400 Bad Request** jika data tidak valid.
     
-21. ![image](https://github.com/user-attachments/assets/01c66683-dca9-4b3f-8bf7-4813dbc2ebf6)
+20. ![image](https://github.com/user-attachments/assets/01c66683-dca9-4b3f-8bf7-4813dbc2ebf6)
     
-22. ![image](https://github.com/user-attachments/assets/97027176-242e-4745-a567-bb0c468e9141)
+30. ![image](https://github.com/user-attachments/assets/97027176-242e-4745-a567-bb0c468e9141)
     
-23. ![image](https://github.com/user-attachments/assets/9f1fa439-8a0c-4e4f-a8b7-78fec83aa528)
+31. ![image](https://github.com/user-attachments/assets/9f1fa439-8a0c-4e4f-a8b7-78fec83aa528)
     
-24. ![image](https://github.com/user-attachments/assets/45ca7b5a-8f73-499d-83fb-ed17b7881095)
+32. ![image](https://github.com/user-attachments/assets/45ca7b5a-8f73-499d-83fb-ed17b7881095)
     
-25. ![image](https://github.com/user-attachments/assets/b102d296-46ce-4654-916a-c2e07ad5d690)
+33. ![image](https://github.com/user-attachments/assets/b102d296-46ce-4654-916a-c2e07ad5d690)
     
-26. ![image](https://github.com/user-attachments/assets/bec9ff38-53b4-427c-87d4-48c48ff63077)
+34. ![image](https://github.com/user-attachments/assets/bec9ff38-53b4-427c-87d4-48c48ff63077)
 
-27. ![image](https://github.com/user-attachments/assets/34a5f5cb-c5d8-4fe6-8a08-78937845ad10)
+35. ![image](https://github.com/user-attachments/assets/34a5f5cb-c5d8-4fe6-8a08-78937845ad10)
 
-28. ![image](https://github.com/user-attachments/assets/4a4a666c-3fe8-4854-bcf0-120ecd9f004a)
+36. ![image](https://github.com/user-attachments/assets/4a4a666c-3fe8-4854-bcf0-120ecd9f004a)
