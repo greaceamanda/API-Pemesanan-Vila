@@ -77,10 +77,12 @@ Berikut adalah beberapa endpoint utama yang disediakan:
 ## PENGUJIAN
 
 ### Pengecekan Request Method:
-a. Mendapatkan list/detail data (GET)
-b. Membuat data baru (POST)
-c. Mengubah data (PUT)
-note: HTTP 404 jika id tidak ditemukan dan HTTP 400 jika data tidak lengkap
+
+a. Mendapatkan list/detail data (GET)  
+b. Membuat data baru (POST)  
+c. Mengubah data (PUT)  
+
+> **Note:** HTTP 404 jika ID tidak ditemukan dan HTTP 400 jika data tidak lengkap.
 
 ### Hasil Pengujian
 1. `GET /villas`
@@ -155,15 +157,25 @@ note: HTTP 404 jika id tidak ditemukan dan HTTP 400 jika data tidak lengkap
     ![image](https://github.com/user-attachments/assets/949bc56f-e21b-4395-8545-e8dd952161d2)
     Endpoint ini digunakan oleh customer untuk melakukan pemesanan vila. Pengujian terhadap endpoint `POST /customers/{id}/bookings` berhasil membuat data pemesanan dengan status **200 OK**, dan memberikan status **400 Bad Request** jika data tidak valid.
     
-20. ![image](https://github.com/user-attachments/assets/01c66683-dca9-4b3f-8bf7-4813dbc2ebf6)
+19. `PUT /customers/{id}`
+   ![image](https://github.com/user-attachments/assets/01c66683-dca9-4b3f-8bf7-4813dbc2ebf6)
+    Endpoint ini digunakan untuk mengubah informasi profil dari seorang customer. Pengujian terhadap endpoint `PUT /customers/{id}` berhasil memperbarui data customer dan memberikan status **200 OK**.
     
-30. ![image](https://github.com/user-attachments/assets/97027176-242e-4745-a567-bb0c468e9141)
+20. `GET /vouchers`
+    ![image](https://github.com/user-attachments/assets/97027176-242e-4745-a567-bb0c468e9141)
+    Endpoint ini digunakan untuk menampilkan seluruh daftar voucher yang tersedia. Pengujian terhadap endpoint `GET /vouchers` berhasil menampilkan data voucher dengan status **200 OK**.
     
-31. ![image](https://github.com/user-attachments/assets/9f1fa439-8a0c-4e4f-a8b7-78fec83aa528)
+21. `GET /vouchers/{id}`
+    ![image](https://github.com/user-attachments/assets/9f1fa439-8a0c-4e4f-a8b7-78fec83aa528)
+    Endpoint ini digunakan untuk menampilkan detail dari voucher tertentu. Pengujian terhadap endpoint `GET /vouchers/{id}` berhasil menampilkan informasi voucher dengan status **200 OK**.
     
-32. ![image](https://github.com/user-attachments/assets/45ca7b5a-8f73-499d-83fb-ed17b7881095)
+22. `POST /vouchers`
+    ![image](https://github.com/user-attachments/assets/45ca7b5a-8f73-499d-83fb-ed17b7881095)
+    Endpoint ini digunakan untuk membuat voucher baru ke dalam sistem. Pengujian terhadap endpoint `POST /vouchers` berhasil menyimpan data voucher baru dengan status **200 OK**.
     
-33. ![image](https://github.com/user-attachments/assets/b102d296-46ce-4654-916a-c2e07ad5d690)
+23. `PUT /vouchers/{id}`
+    ![image](https://github.com/user-attachments/assets/b102d296-46ce-4654-916a-c2e07ad5d690)
+    Endpoint ini digunakan untuk mengubah informasi dari voucher yang sudah ada. Pengujian terhadap endpoint `PUT /vouchers/{id}` berhasil memperbarui data voucher dan memberikan status **200 OK**.
     
 34. ![image](https://github.com/user-attachments/assets/bec9ff38-53b4-427c-87d4-48c48ff63077)
 
